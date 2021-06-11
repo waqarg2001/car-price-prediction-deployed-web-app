@@ -53,9 +53,8 @@ def prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesiz
 def main():       
     # front end elements of the web page 
     html_temp = """ 
-    <div style ="background-color:yellow;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">Credit Risk Modeling developed by M.Waqar Gul</h1> 
-    <h3 style="color:black;text-align:center;">https://www.linkedin.com/in/waqar-gul</h1>
+    <div style ="background-color:black;padding:13px"> 
+    <h1 style ="color:white;text-align:center;">Credit Risk Modeling developed by M.Waqar Gul</h1> 
     </div> 
     """
       
@@ -63,7 +62,7 @@ def main():
     st.markdown(html_temp, unsafe_allow_html = True) 
       
     # following lines create boxes in which user can enter data required to make prediction 
-    drivewheel= st.selectbox('Drive-wheel',("fwd","rwd","4wd))
+    drivewheel= st.selectbox('Drive-wheel',("fwd","rwd","4wd"))
     enginelocation = st.selectbox('Engine-location',("front","rear")) 
     carlength =st.number_input('Car-length')
     carwidth =st.number_input('Car-width')       
