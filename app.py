@@ -45,14 +45,14 @@ def prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesiz
   
   values=[[drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg]]
   prediction=model.predict(values)
-  prediction=round(pred[0],2)
+  prediction=round(prediction[0],2)
   return prediction
 
 def main():       
     # front end elements of the web page 
     html_temp = """ 
     <div style ="background-color:black;padding:13px"> 
-    <h1 style ="color:white;text-align:center;">Credit Risk Modeling developed by M.Waqar Gul</h1> 
+    <h1 style ="color:white;text-align:center;">Car Price Prediction developed by M.Waqar Gul</h1> 
     </div> 
     """
       
