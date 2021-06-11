@@ -81,7 +81,7 @@ def main():
             time.sleep(0.1)
             progress_bar.progress(i)
             progress_text.text(f"Progress: {i}%")
-        st.success('Car price is ${}'.format(result))
+        st.success('Car price is ${}'.format(round(result,2)))
         print(result)
                                             
 
