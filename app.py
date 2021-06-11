@@ -60,7 +60,7 @@ def predict():
   return render_template('Home.html',pred=f"Car price is ${prediction}")
 
 
-if __name__=='__main__':
+if __name__=="__main__"
   app.run(debug=True)
   
   
