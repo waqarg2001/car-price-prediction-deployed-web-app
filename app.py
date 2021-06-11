@@ -4,7 +4,7 @@ import requests
 
 model=load_model('car_price_model1')
 
-app=Flask(_name_)
+app=Flask(__name__)
 @app.route('/')
 def home():
   return render_template('Home.html')
@@ -60,7 +60,7 @@ def predict():
   return render_template('Home.html',pred=f"Car price is ${prediction}")
 
 
-if _name_=='_main_':
+if __name__=='__main__':
   app.run(debug=True)
   
   
