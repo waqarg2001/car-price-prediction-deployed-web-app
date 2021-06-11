@@ -4,14 +4,10 @@ import requests
 
 model=load_model('car_price_model1')
 
-app=Flask(__name__)
-@app.route('/')
-def home():
-  return render_template('Home.html')
+@st.cache()
 
-@app.route('/predict',methods=['POST'])
-def predict():
-  drivewheel=request.form['drive_wheel']
+
+def prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg):
   if drivewheel=='fwd':
     drivewheel=1
   elif drivewheel=='rwd':
@@ -19,19 +15,16 @@ def predict():
   else:
     drivewheel=0
     
-  enginelocation=request.form['engine_location']
+
   if enginelocation=='front':
     enginelocation=0
   else:
     enginelocation=1
     
     
-  carlength=int(request.form['car_length'])
-  carwidth=int(request.form['car_width'])
-  curbweight=int(request.form['curb_weight'])
-  enginesize=int(request.form['engine_size'])
+
   
-  fuelsystem=request.form['fuel_system']
+
   if fuelsystem=='mpfi':
     fuelsystem=5
   elif fuelsystem=='2bbl':
@@ -49,20 +42,52 @@ def predict():
   else:
     fuelsystem=4
     
-  horsepower=int(request.form['horse_power'])
-  citympg=int(request.form['city_mpg'])
-  highwaympg=int(request.form['highway_mpg'])
+ 
   
   
   values=[[drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg]]
   prediction=model.predict(values)
   prediction=round(pred[0],2)
-  return render_template('Home.html',pred=f"Car price is ${prediction}")
+  return prediction
 
+def main():       
+    # front end elements of the web page 
+    html_temp = """ 
+    <div style ="background-color:yellow;padding:13px"> 
+    <h1 style ="color:black;text-align:center;">Credit Risk Modeling developed by M.Waqar Gul</h1> 
+    <h3 style="color:black;text-align:center;">https://www.linkedin.com/in/waqar-gul</h1>
+    </div> 
+    """
+      
+    # display the front end aspect
+    st.markdown(html_temp, unsafe_allow_html = True) 
+      
+    # following lines create boxes in which user can enter data required to make prediction 
+    drivewheel= st.selectbox('Drive-wheel',("fwd","rwd","4wd))
+    enginelocation = st.selectbox('Engine-location',("front","rear")) 
+    carlength =st.number_input('Car-length')
+    carwidth =st.number_input('Car-width')       
+    curbweight =st.number_input('Cur-weight')                                           
+    enginesize=st.number_input('Engine-size')
+    fuelsystem=st.selectbox('Fuel-system',("mpfi","2bbl","idi","1bbl","spdi","4bbl","mfi","spfi"))
+    horsepower = st.number_input("Horse Power") 
+    citympg = st.number_input("City-mpg") 
+    highwaympg = st.number_input("Highway-mpg")
+    result =""
+                                            
+    if st.button("Predict"): 
+        result = prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg) 
+        progress_bar = st.progress(0)
+        progress_text = st.empty()
+        for i in range(101):
+            time.sleep(0.1)
+            progress_bar.progress(i)
+            progress_text.text(f"Progress: {i}%")
+        st.success('Car price is ${}'.format(result))
+                                            
 
-if __name__=="__main__":
-  
-  app.run(debug=True)
+if __name__=='__main__':
+                                            main()
   
   
   
