@@ -1,6 +1,4 @@
-from flask import Flask, render_template,request
 from tensorflow.keras.models import load_model
-import requests
 
 model=load_model('car_price_model1')
 
