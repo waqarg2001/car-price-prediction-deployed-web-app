@@ -44,9 +44,9 @@ def prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesiz
  
   
   
-  values=[[drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg]]
+  values=[drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg]
   prediction=model.predict(values)
-  return prediction[0]
+  return prediction
 
 def main():       
     # front end elements of the web page 
@@ -81,6 +81,7 @@ def main():
             progress_bar.progress(i)
             progress_text.text(f"Progress: {i}%")
         st.success('Car price is ${}'.format(result))
+        print(result)
                                             
 
 if __name__=='__main__':
