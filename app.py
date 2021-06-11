@@ -1,5 +1,6 @@
 from tensorflow.keras.models import load_model
 import streamlit as st
+import time
 model=load_model('car_price_model1')
 
 @st.cache()
