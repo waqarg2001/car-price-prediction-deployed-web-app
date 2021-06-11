@@ -64,7 +64,7 @@ def main():
     enginelocation = st.selectbox('Engine-location',("front","rear")) 
     carlength =st.number_input('Car-length')
     carwidth =st.number_input('Car-width')       
-    curbweight =st.number_input('Cur-weight')                                           
+    curbweight =st.number_input('Curb-weight')                                           
     enginesize=st.number_input('Engine-size')
     fuelsystem=st.selectbox('Fuel-system',("mpfi","2bbl","idi","1bbl","spdi","4bbl","mfi","spfi"))
     horsepower = st.number_input("Horse Power") 
