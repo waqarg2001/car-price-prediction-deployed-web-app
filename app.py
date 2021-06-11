@@ -46,7 +46,7 @@ def prediction(drivewheel,enginelocation,carlength,carwidth,curbweight,enginesiz
   
   values=[[drivewheel,enginelocation,carlength,carwidth,curbweight,enginesize,fuelsystem,horsepower,citympg,highwaympg]]
   prediction=model.predict(values)
-  return prediction
+  return prediction[0]
 
 def main():       
     # front end elements of the web page 
