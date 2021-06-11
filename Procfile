@@ -1,1 +1,1 @@
-web: gunicorn app:car-price-prediction-by-waqar
+web: gunicorn app:app
